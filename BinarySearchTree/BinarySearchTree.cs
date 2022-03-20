@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Collections.Generic;
-using System.Text;
 
 namespace BinarySearchTree
 {
-
+    [DebuggerDisplay("{value}")]
     class Node<T>
     {
         public T value;
@@ -222,22 +222,30 @@ namespace BinarySearchTree
 
             stak.Push(root);
 
-            Node<T> temp = root;
+            Node<T> current = root;
 
-            if(root.rightChild != null)
-            while (temp.leftChild != null)
+
+            while (stak.Count > 0)
             {
-                temp = temp.leftChild;
-                stak.Push(temp); 
-            }
-
-
-
-            while(stak.Peek() != null)
-            {
-                list.Add(stak.Pop()); 
+                list.Add(current);
+                if (current.rightChild != null)
+                {
+                    stak.Push(current.rightChild);
+                }
+                if (current.leftChild != null)
+                {
+                    stak.Push(current.leftChild);
+                }
+                current = stak.Pop();                
             }
             return list;  
         }
+
+        public List<Node<T>> InOrder()
+        {
+
+        }
+
+
     }
 }
