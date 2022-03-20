@@ -214,6 +214,30 @@ namespace BinarySearchTree
             }
         }
 
+        public List<Node<T>> Preorder()
+        {
+            List<Node<T>> list = new List<Node<T>>();
 
+            Stack<Node<T>> stak = new Stack<Node<T>>();
+
+            stak.Push(root);
+
+            Node<T> temp = root;
+
+            if(root.rightChild != null)
+            while (temp.leftChild != null)
+            {
+                temp = temp.leftChild;
+                stak.Push(temp); 
+            }
+
+
+
+            while(stak.Peek() != null)
+            {
+                list.Add(stak.Pop()); 
+            }
+            return list;  
+        }
     }
 }
