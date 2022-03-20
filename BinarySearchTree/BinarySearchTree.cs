@@ -241,11 +241,47 @@ namespace BinarySearchTree
             return list;  
         }
 
-        public List<Node<T>> InOrder()
+        public Stack<Node<T>> postOrder()
         {
+            Stack<Node<T>> list = new Stack<Node<T>>();
+            Stack<Node<T>> stak = new Stack<Node<T>>();
 
+            Node<T> current = root;
+            stak.Push(root);
+                
+            while(stak.Count > 0)
+            {
+                list.Push(current);
+                if (current.rightChild != null)
+                {
+                    stak.Push(current.rightChild);
+                }
+                if (current.leftChild != null)
+                {
+                    stak.Push(current.leftChild);
+                }
+                current = stak.Pop();
+            }
+
+            return list; 
         }
 
+        /*  
+            while (stack.Count > 0)
+            {
+                Node<T> current = stack.Pop();
 
+                list.Push(current.Value);
+
+                if (current.Left != null)
+                {
+                    stack.Push(current.Left);
+                }
+
+                if (current.Right != null)
+                {
+                    stack.Push(current.Right);
+                }
+            */
     }
 }
