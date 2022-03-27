@@ -32,7 +32,7 @@ namespace BinarySearchTree
             binarySearchTree.Insert('E');  
             binarySearchTree.Insert('H');
 
-            var result = binarySearchTree.postOrder();
+            var result = binarySearchTree.BreadthFirst();
 
             }
     }
